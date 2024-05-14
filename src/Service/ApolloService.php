@@ -101,7 +101,17 @@ class ApolloService
 
         $sheet = $spreadsheet->setActiveSheetIndex(0);
 
-        return $this->formatData($sheet->toArray());
+        $data = $this->formatData($sheet->toArray());
+
+        foreach ($data as &$datum) {
+            foreach ($datum as &$value) {
+                if($value) {
+                    $value = trim($value);
+                }
+            }
+        }
+
+        return $data;
     }
 
     public function importProducts()
@@ -181,40 +191,40 @@ class ApolloService
 
         $spreadsheet = $reader->load($file->getRealPath());
 
-       $sheet = $spreadsheet->setActiveSheetIndex(0);
+        $sheet = $spreadsheet->setActiveSheetIndex(0);
 
-       $data = $sheet->toArray();
+        $data = $sheet->toArray();
 
-       if (!isset($data[1])) {
-           $form->get('excel')->addError(new FormError('Bad excel format'));
-           return false;
-       }
+        if (!isset($data[1])) {
+            $form->get('excel')->addError(new FormError('Bad excel format'));
+            return false;
+        }
 
-       $formattedData = $this->formatData($data);
+        $formattedData = $this->formatData($data);
 
-       foreach ($formattedData as $key => $formattedDatum) {
-           if (empty($formattedDatum['mpn'])) {
-               $form->get('excel')->addError(new FormError('Bad row '.($key+2).' mpn value is empty'));
-           }
-           if (empty($formattedDatum['name'])) {
-               $form->get('excel')->addError(new FormError('Bad row '.($key+2).' name value is empty'));
-           }
-           if (empty($formattedDatum['category'])) {
-               $form->get('excel')->addError(new FormError('Bad row '.($key+2).' category value is empty'));
-           }
-           if (empty($formattedDatum['final_price'])) {
-               $form->get('excel')->addError(new FormError('Bad row '.($key+2).' final_price value is empty'));
-           }
-           if (empty($formattedDatum['price'])) {
-               $form->get('excel')->addError(new FormError('Bad row '.($key+2).' price value is empty'));
-           }
-           if (empty($formattedDatum['brand'])) {
-               $form->get('excel')->addError(new FormError('Bad row '.($key+2).' brand value is empty'));
-           }
-           if (!empty($formattedDatum['category']) && !$this->getCategory($formattedDatum['category'])) {
-               $form->get('excel')->addError(new FormError('Bad row '.($key+2).' category does not exists'));
-           }
-       }
+        foreach ($formattedData as $key => $formattedDatum) {
+            if (empty($formattedDatum['mpn'])) {
+                $form->get('excel')->addError(new FormError('Bad row '.($key+2).' mpn value is empty'));
+            }
+            if (empty($formattedDatum['name'])) {
+                $form->get('excel')->addError(new FormError('Bad row '.($key+2).' name value is empty'));
+            }
+            if (empty($formattedDatum['category'])) {
+                $form->get('excel')->addError(new FormError('Bad row '.($key+2).' category value is empty'));
+            }
+            if (empty($formattedDatum['final_price'])) {
+                $form->get('excel')->addError(new FormError('Bad row '.($key+2).' final_price value is empty'));
+            }
+            if (empty($formattedDatum['price'])) {
+                $form->get('excel')->addError(new FormError('Bad row '.($key+2).' price value is empty'));
+            }
+            if (empty($formattedDatum['brand'])) {
+                $form->get('excel')->addError(new FormError('Bad row '.($key+2).' brand value is empty'));
+            }
+            if (!empty($formattedDatum['category']) && !$this->getCategory($formattedDatum['category'])) {
+                $form->get('excel')->addError(new FormError('Bad row '.($key+2).' category does not exists'));
+            }
+        }
 
         foreach ($formattedData[0] as $name => $value) {
             if (strpos($name, 'feature_') !== false) {
