@@ -1,0 +1,34 @@
+
+printplius_sylius_apollo_integration_admin_apollo_shipping_pricing:
+  resource: |
+    alias: printplius_sylius_apollo_integration.apollo_shipping_pricing
+    section: admin
+    except: ['show']
+    redirect: index
+    templates: "@PrintPliusSyliusApolloIntegrationPlugin\\CrudUi"
+    grid: printplius_sylius_apollo_integration.apollo_shipping_pricing
+    permission: true
+    vars:
+      index:
+        icon: pencil
+  type: sylius.resource
+
+printplius_sylius_apollo_integration_admin_apollo_duplicate:
+  resource: |
+    alias: printplius_sylius_apollo_integration.apollo_duplicate
+    section: admin
+    except: ['show']
+    redirect: index
+    templates: "@PrintPliusSyliusApolloIntegrationPlugin\\CrudUi"
+    grid: printplius_sylius_apollo_integration.apollo_duplicate
+    permission: true
+    vars:
+      index:
+        icon: pencil
+  type: sylius.resource
+
+printplius_sylius_apollo_integration_admin_index:
+  path: /apollo-integration
+  methods: [GET, POST]
+  defaults:
+    _controller: PrintPlius\SyliusApolloIntegrationPlugin\Controller\SettingsController::indexAction

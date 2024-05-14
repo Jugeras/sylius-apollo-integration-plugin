@@ -1,0 +1,7 @@
+sylius_resource:
+  resources:
+    printplius_sylius_apollo_integration.apollo_duplicate:
+      driver: doctrine/orm
+      classes:
+        model: PrintPlius\SyliusApolloIntegrationPlugin\Entity\ApolloDuplicate
+        form: PrintPlius\SyliusApolloIntegrationPlugin\Form\ApolloDuplicateType

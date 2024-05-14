@@ -1,0 +1,53 @@
+sylius_grid:
+  templates:
+    action:
+      settings: "@PrintPliusSyliusApolloIntegrationPlugin/Grid/Action/settings.html.twig"
+      shipping_pricing: "@PrintPliusSyliusApolloIntegrationPlugin/Grid/Action/shipping_pricing.html.twig"
+  grids:
+    printplius_sylius_apollo_integration.apollo_duplicate:
+      driver:
+        name: doctrine/orm
+        options:
+          class: PrintPlius\SyliusApolloIntegrationPlugin\Entity\ApolloDuplicate
+      sorting:
+        code: asc
+      fields:
+        code:
+          type: string
+          label: printplius_sylius_apollo_integration.ui.code
+          sortable: ~
+        importManufacturer:
+          type: string
+          label: printplius_sylius_apollo_integration.ui.import_manufacturer
+          sortable: ~
+        productManufacturer:
+          type: string
+          label: printplius_sylius_apollo_integration.ui.product_manufacturer
+          sortable: ~
+        newCode:
+          type: string
+          label: printplius_sylius_apollo_integration.ui.new_code
+          sortable: ~
+        newManufacturer:
+          type: string
+          label: printplius_sylius_apollo_integration.ui.new_manufacturer
+          sortable: ~
+      actions:
+        main:
+          settings:
+            type: settings
+            label: printplius_sylius_apollo_integration.ui.index
+            options:
+              link:
+                route: printplius_sylius_apollo_integration_admin_index
+          shipping_pricing:
+            type: shipping_pricing
+            label: printplius_sylius_apollo_integration.ui.shipping_pricing
+            options:
+              link:
+                route: printplius_sylius_apollo_integration_admin_apollo_shipping_pricing_index
+        item:
+          update:
+            type: update
+          delete:
+            type: delete

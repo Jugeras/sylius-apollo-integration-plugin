@@ -1,0 +1,47 @@
+parameters:
+  import_priority:
+    APOLLO: 1
+
+services:
+  _defaults:
+    autowire: true      # Automatically injects dependencies in your services.
+    autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+  PrintPlius\SyliusApolloIntegrationPlugin\:
+    resource: '../../'
+    exclude:
+      - '../../DependencyInjection/'
+      - '../../Entity/'
+      - '../../PrintPliusSyliusApolloIntegrationPlugin.php'
+      - '../../Tests/'
+      - '../../Resources/'
+
+  PrintPlius\SyliusApolloIntegrationPlugin\Menu\AdminMenuListener:
+    tags:
+      - { name: kernel.event_listener, event: sylius.menu.admin.main, method: addAdminMenuItems }
+
+  PrintPlius\SyliusApolloIntegrationPlugin\Form\ApolloShippingPricingType:
+    arguments:
+      - 'PrintPlius\SyliusApolloIntegrationPlugin\Entity\ApolloShippingPricing'
+    tags:
+      - { name: form.type, alias: printplius_sylius_apollo_shipping_pricing }
+
+  PrintPlius\SyliusApolloIntegrationPlugin\Form\ApolloDuplicateType:
+    arguments:
+      - 'PrintPlius\SyliusApolloIntegrationPlugin\Entity\ApolloDuplicate'
+    tags:
+      - { name: form.type, alias: printplius_sylius_apollo_duplicate }
+
+  PrintPlius\SyliusApolloIntegrationPlugin\Helper\ProductHelper:
+    arguments:
+      $brandClass: '%loevgaard_sylius_brand.model.brand.class%'
+
+  PrintPlius\SyliusApolloIntegrationPlugin\Helper\CategoryAssociationHelper:
+    tags: [ 'icecat.category_association', 'carrier_plus.category_association' ]
+
+  PrintPlius\SyliusApolloIntegrationPlugin\Service\ApolloService:
+    arguments:
+      $url: '%env(resolve:APOLLO_URL)%'
+      $priority: '%import_priority%'
+      $projectDir: '%kernel.project_dir%'

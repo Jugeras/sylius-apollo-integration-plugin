@@ -1,0 +1,56 @@
+{% extends '@SyliusAdmin/layout.html.twig' %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+
+{% endblock %}
+
+{% block pre_content %}
+    <div class="ui right floated buttons">
+
+        <a class="ui button secondary " href="{{ path('printplius_sylius_apollo_integration_admin_apollo_shipping_pricing_index') }}">
+            <i class="icon truck"></i>
+            {{ 'printplius_sylius_apollo_integration.ui.shipping_pricing'|trans }}
+        </a>
+        <a class="ui button secondary " href="{{ path('printplius_sylius_apollo_integration_admin_apollo_duplicate_index') }}">
+            {{ 'printplius_sylius_apollo_integration.ui.duplicate'|trans }}
+        </a>
+    </div>
+    <div style="clear: both"></div>
+
+    <div class="ui segment">
+        {{ form_start(form, {
+            attr: {
+                class: 'ui form'
+            }
+        }) }}
+        {{ form_row(form._token) }}
+
+        <div class="field">
+            {{ form_row(form.excel) }}
+        </div>
+
+        <div class="field">
+            {{ form_row(form.images) }}
+        </div>
+
+
+
+
+        <div class="ui buttons">
+            <button type="submit" class="ui primary button">
+                {{ 'sylius.ui.save'|trans }}
+            </button>
+        </div>
+
+        {{ form_end(form, {
+            render_rest: false
+        }) }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+{% endblock %}

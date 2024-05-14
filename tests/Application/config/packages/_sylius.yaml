@@ -1,0 +1,53 @@
+imports:
+    - { resource: "@SyliusCoreBundle/Resources/config/app/config.yml" }
+    - { resource: "@SyliusAdminBundle/Resources/config/app/config.yml" }
+    - { resource: "@SyliusAdminApiBundle/Resources/config/app/config.yml" }
+    - { resource: "@SyliusShopBundle/Resources/config/app/config.yml" }
+    - { resource: "@SyliusApiBundle/Resources/config/app/config.yaml" }
+    - { resource: "@PrintPliusSyliusApolloIntegrationPlugin/Resources/config/config.yml" }
+    - { resource: "@PrintPliusSyliusIceCatIntegrationPlugin/Resources/config/config.yaml" }
+    - { resource: "@PrintPliusSyliusCarrierPlusPlugin/Resources/config/config.yml" }
+
+parameters:
+    sylius_core.public_dir: '%kernel.project_dir%/public'
+
+sylius_shop:
+    product_grid:
+        include_all_descendants: true
+
+
+sylius_product:
+    resources:
+        product:
+            classes:
+                model: Tests\PrintPlius\SyliusApolloIntegrationPlugin\Application\Entity\Product\Product
+                repository: Tests\PrintPlius\SyliusApolloIntegrationPlugin\Application\Repository\ProductRepository
+        product_variant:
+            classes:
+                model: Tests\PrintPlius\SyliusApolloIntegrationPlugin\Application\Entity\Product\ProductVariant
+
+sylius_customer:
+    resources:
+        customer:
+            classes:
+                model: Tests\PrintPlius\SyliusApolloIntegrationPlugin\Application\Entity\Customer\Customer
+
+
+sylius_attribute:
+    resources:
+        product:
+            attribute:
+                classes:
+                    model: Tests\PrintPlius\SyliusApolloIntegrationPlugin\Application\Entity\Product\ProductAttribute
+                translation:
+                    classes:
+                        model: Tests\PrintPlius\SyliusApolloIntegrationPlugin\Application\Entity\Product\ProductAttributeTranslation
+
+sylius_addressing:
+    resources:
+        address:
+            classes:
+                model: Tests\PrintPlius\SyliusApolloIntegrationPlugin\Application\Entity\Addressing\Address
+        zone:
+            classes:
+                model: Tests\PrintPlius\SyliusApolloIntegrationPlugin\Application\Entity\Addressing\Zone

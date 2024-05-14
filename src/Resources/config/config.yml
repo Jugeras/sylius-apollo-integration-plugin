@@ -1,0 +1,3 @@
+imports:
+  - { resource: "@PrintPliusSyliusApolloIntegrationPlugin/Resources/config/grids/*.yml" }
+  - { resource: "@PrintPliusSyliusApolloIntegrationPlugin/Resources/config/resources/*.yml" }

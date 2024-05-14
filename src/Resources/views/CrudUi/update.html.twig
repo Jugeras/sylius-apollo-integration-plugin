@@ -1,0 +1,7 @@
+{% extends '@SyliusAdmin/Crud/update.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {{ sylius_template_event([event_prefix ~ '.javascripts', 'sylius.admin.update.javascripts'], { 'metadata': metadata }) }}
+{% endblock %}

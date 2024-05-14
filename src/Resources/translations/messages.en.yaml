@@ -1,0 +1,31 @@
+printplius_sylius_apollo_integration:
+  ui:
+    integrations: Integrations
+    apollo_integration: Apollo Integrations
+    id: Id
+    yes: Yes
+    no: No
+    created: Created
+    shipping_pricing: Shipping pricing
+    apollo_shipping_pricings: Apollo shipping pricing
+    from: From
+    to: To
+    price: Price
+    new_apollo_shipping_pricing: Apollo add shipping pricing
+    edit_apollo_shipping_pricing: Apollo edit shipping pricing
+    priority_import: Priority import
+    apollo_duplicates: Apollo duplicate
+    code: Code
+    import_manufacturer: Import manufacturer
+    product_manufacturer: Product manufacturer
+    new_code: New code
+    new_manufacturer: New manufacturer
+    duplicate: Duplicate
+    edit_apollo_duplicate: Edit Apollo duplicate
+    excel: Excel
+    images: Images zip
+    index: Settings
+  product_option:
+      warehouses: Warehouses
+
+

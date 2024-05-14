@@ -1,0 +1,7 @@
+sylius_resource:
+  resources:
+    printplius_sylius_apollo_integration.apollo_shipping_pricing:
+      driver: doctrine/orm
+      classes:
+        model: PrintPlius\SyliusApolloIntegrationPlugin\Entity\ApolloShippingPricing
+        form: PrintPlius\SyliusApolloIntegrationPlugin\Form\ApolloShippingPricingType

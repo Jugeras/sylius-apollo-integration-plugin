@@ -1,0 +1,3 @@
+printplius_sylius_apollo_integration_plugin_admin:
+  resource: "@PrintPliusSyliusApolloIntegrationPlugin/Resources/config/routes/admin_routing.yml"
+  prefix: '/%sylius_admin.path_name%'

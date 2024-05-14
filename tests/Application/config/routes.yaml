@@ -1,0 +1,12 @@
+printplius_sylius_apollo_integration:
+  resource: "@PrintPliusSyliusApolloIntegrationPlugin/Resources/config/routing.yml"
+
+loevgaard_sylius_brand:
+  resource: "@LoevgaardSyliusBrandPlugin/Resources/config/routing.yaml"
+printplius_sylius_icecat_integration:
+  resource: "@PrintPliusSyliusIceCatIntegrationPlugin/Resources/config/routing.yml"
+printplius_sylius_b2b:
+  resource: "@PrintPliusSyliusB2BPlugin/Resources/config/routing.yml"
+
+
+
