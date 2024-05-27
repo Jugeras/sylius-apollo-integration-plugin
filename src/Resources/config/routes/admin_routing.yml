@@ -32,3 +32,9 @@ printplius_sylius_apollo_integration_admin_index:
   methods: [GET, POST]
   defaults:
     _controller: PrintPlius\SyliusApolloIntegrationPlugin\Controller\SettingsController::indexAction
+
+printplius_sylius_apollo_integration_admin_import:
+  path: /apollo-integration/import
+  methods: [GET, POST]
+  defaults:
+    _controller: PrintPlius\SyliusApolloIntegrationPlugin\Controller\SettingsController::importAction

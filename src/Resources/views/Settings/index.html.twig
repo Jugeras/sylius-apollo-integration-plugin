@@ -9,6 +9,9 @@
 {% block pre_content %}
     <div class="ui right floated buttons">
 
+        <a class="ui button primary " href="{{ path('printplius_sylius_apollo_integration_admin_import') }}">
+            {{ 'printplius_sylius_apollo_integration.ui.import'|trans }}
+        </a>
         <a class="ui button secondary " href="{{ path('printplius_sylius_apollo_integration_admin_apollo_shipping_pricing_index') }}">
             <i class="icon truck"></i>
             {{ 'printplius_sylius_apollo_integration.ui.shipping_pricing'|trans }}

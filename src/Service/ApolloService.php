@@ -126,6 +126,7 @@ class ApolloService
                 $data['code'] = (string)$product['mpn'];
                 $data['price'] = (float)$product['price'];
                 $data['finalPrice'] = (float)$product['final_price'];
+                $data['shortDescription'] = (string)$product['short_description'];
                 $data['quantity'] = 0;
                 $data['deliveryDate'] = '';
                 $data['arrivingQuantity'] = '';

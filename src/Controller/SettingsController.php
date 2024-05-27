@@ -55,4 +55,13 @@ class SettingsController extends AbstractController
             ]
         );
     }
+
+    public function importAction(): Response
+    {
+        $this->apolloService->importProducts();
+
+        $this->addFlash('success', 'Imported successfully!');
+
+        return $this->redirectToRoute('printplius_sylius_apollo_integration_admin_index');
+    }
 }

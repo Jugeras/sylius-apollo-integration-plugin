@@ -199,6 +199,7 @@ class ProductHelper
 
                     $this->setAttributes($product, $productsDatum);
                 } else {
+                    $this->setDetails($product, $productsDatum);
                     $this->setVariant($product, $productsDatum);
                     $this->setManufacturer($product, $productsDatum);
                 }
